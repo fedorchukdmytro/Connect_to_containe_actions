@@ -25,7 +25,7 @@ jobs:
     - name: Define IP server
       run: |
           echo SERV_IP=$(ip -4 route show default | cut -d' ' -f3) >> $GITHUB_ENV
-          echo $GITHUB_ENV
+          
     
     
   build:   
@@ -45,10 +45,10 @@ jobs:
       run: |
         pip install pyats[full]
         pip install paramiko
-    
+    - name: Show Server IP
+      run: |
+        echo "${{ env.SERV_IP }}"
     - name: PyTS run
-      env: 
-        IP: ${{ SERV_IP }} 
       run: |
         pyats run job py_job.py
     
