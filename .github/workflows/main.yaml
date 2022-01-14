@@ -24,8 +24,8 @@ jobs:
     - name: Define IP server
       run: |
           echo "SERV_IP=$(ip -4 route show default | cut -d' ' -f3)" >> $GITHUB_ENV
-          
           echo ${{ env.SERV_IP }}
+          ifconfig
     - name: RUN IPERFSERVER
       run: |
           iperf3 -s --one-of
@@ -33,7 +33,7 @@ jobs:
     
     
   build:
-    # needs: job1   
+    needs: job1   
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
