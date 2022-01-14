@@ -50,7 +50,8 @@ jobs:
         pip install paramiko
     # - name: Show Server IP
     #   run: |
-    #     echo "${{ env.SERV_IP }}"
+        echo "${{ env.SERV_IP }}"
+        exho "FUCK"
     - name: PyTS run
       env:
         IP: ${{ env.SERV_IP }} 
