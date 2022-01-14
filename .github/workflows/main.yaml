@@ -28,7 +28,7 @@ jobs:
           
     - name: RUN IPERFSERVER
       run: |
-          iperf3 -s --one-of -p 8080
+          iperf3 -s --one-of 
           
     
     
