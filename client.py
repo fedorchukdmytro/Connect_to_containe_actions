@@ -3,7 +3,7 @@ import subprocess
 from pyats import aetest
 import os
 
-IP = os.getenv[SERV_IP]
+IP = os.getenv['GITHUB_ENV']
 
 logger = logging.getLogger(__name__)
 
