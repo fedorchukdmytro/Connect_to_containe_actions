@@ -29,6 +29,7 @@ jobs:
     - name: RUN IPERFSERVER
       run: |
           iperf3 -s --one-of 
+          ifconfig
           
     
     
