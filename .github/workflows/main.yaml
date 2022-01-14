@@ -25,7 +25,7 @@ jobs:
       run: |
           echo "SERV_IP=$(ip -4 route show default | cut -d' ' -f3)" >> $GITHUB_ENV
           
-          echo ${{ env.SERV_IP }}
+          
     - name: RUN IPERFSERVER
       run: |
           iperf3 -s --one-of
