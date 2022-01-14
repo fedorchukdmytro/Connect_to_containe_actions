@@ -23,7 +23,7 @@ jobs:
           sudo apt-get install iproute2 
     - name: Define IP server
       run: |
-          echo SERV_IP=$(ip -4 route show default | cut -d' ' -f3) >> $GITHUB_ENV
+          echo "SERV_IP=$(ip -4 route show default | cut -d' ' -f3)" >> $GITHUB_ENV
     - name: RUN IPERFSERVER
       run: |
           iperf3 -s --one-of
