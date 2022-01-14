@@ -49,7 +49,7 @@ jobs:
         pip install pyats[full]
         pip install paramiko
         echo "${{ env.SERV_IP }}"
-        exho "FUCK"
+        echo "FUCK"
     - name: PyTS run
       env:
         IP: ${{ env.SERV_IP }} 
