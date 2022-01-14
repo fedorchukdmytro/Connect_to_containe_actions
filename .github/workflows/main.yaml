@@ -47,7 +47,7 @@ jobs:
         pip install paramiko
     - name: Show Server IP
       run: |
-        echo "${{ env.SERV_IP }}"
+        echo "${{ env.GITHUB_ENV }}"
     - name: PyTS run
       run: |
         pyats run job py_job.py
