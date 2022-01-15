@@ -35,7 +35,7 @@ jobs:
       run: echo $(which iperf3)
     - name: RUN IPERFSERVER
       run: |
-          iperf3 -s 
+          sudo iperf3 -s 
           
              
            
