@@ -28,7 +28,7 @@ jobs:
           
     - name: RUN IPERFSERVER
       run: |
-          iperf3 -s --one-of
+          iperf3 -s --one-of 
           
     
     
@@ -55,11 +55,11 @@ jobs:
     
     - name: Show Server IP
       run: |
-        echo $SERV_IP
+          echo $SERV_IP
     
     - name: PyTS run
       env:
-        IP: SERV_IP
+        IP: $SERV_IP
       run: |
         pyats run job py_job.py
     
