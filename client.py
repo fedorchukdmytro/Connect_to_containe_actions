@@ -21,7 +21,7 @@ class tc_one(aetest.Testcase):
     def client_launching(self):
         
         with open('output.json', 'w') as f:
-            client_process = subprocess.Popen(['iperf3', '-c', str(IP), '-J'], stdout=f,)
+            client_process = subprocess.Popen(['iperf3', '-c', IP, '-J'], stdout=f,)
         client_process.wait()
 
     @aetest.cleanup
