@@ -46,16 +46,15 @@ jobs:
       uses: actions/setup-python@v2
       with:  
         python-version: 3.9
-    - name: Show Server IP
-      run: |
-          echo $SERV_IP
+    
     - name: Download math result for job 1
       uses: actions/download-artifact@v2
       with:
         name: homework
-    - shell: bash
+    - name: GET IP
       run: |
           IP="cat math-homework.txt"
+          echo $IP
           
          
           
