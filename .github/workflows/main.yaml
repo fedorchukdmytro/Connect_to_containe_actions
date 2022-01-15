@@ -24,7 +24,7 @@ jobs:
     - name: Define IP server
       run: |
           echo "SERV_IP=$(ip -4 addr show eth0 | grep -oP '(?<=inet\s)\d+(\.\d+){3}')" >> $GITHUB_ENV
-          echo ${{ env.SERV_IP }}
+          ${{ env.SERV_IP }}
           ifconfig
           
     - name: RUN IPERFSERVER
