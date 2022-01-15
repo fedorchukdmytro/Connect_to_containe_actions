@@ -16,11 +16,11 @@ jobs:
     - name: Common set up
       run: |
          sudo apt-get update 
-    # - name: Set up iperf3
-    #   run: |
-    #       sudo apt-get install iperf3
+    - name: Set up iperf3
+      run: |
+          sudo apt-get install iperf3
           
-    #       sudo apt-get install iproute2 
+          sudo apt-get install iproute2 
     - name: Define IP server
       run: |
           SERV_IP=$(ip -4 addr show eth0 | grep -oP '(?<=inet\s)\d+(\.\d+){3}') >> $GITHUB_ENV
@@ -31,9 +31,9 @@ jobs:
       with:
         name: homework
         path: math-homework.txt      
-    # - name: RUN IPERFSERVER
-    #   run: |
-    #       iperf3 -s --one-of -D
+    - name: RUN IPERFSERVER
+      run: |
+          iperf3 -s --one-of -D
           
              
            
@@ -62,27 +62,27 @@ jobs:
 
 
 
-    # - name: Set up iperf3
-    #   run: |   
-    #     sudo apt-get update
-    #     sudo apt-get install iperf3
-    #     ifconfig
+    - name: Set up iperf3
+      run: |   
+        sudo apt-get update
+        sudo apt-get install iperf3
+        ifconfig
                
-    # - name: Set up pyATS    
-    #   run: |    
-    #     pip install pyats[full]
-    #     pip install paramiko
+    - name: Set up pyATS    
+      run: |    
+        pip install pyats[full]
+        pip install paramiko
     
     
     
-    # - name: PyTS run
-    #   env:
-    #     IP: IP
-    #   run: |
-    #     pyats run job py_job.py
+    - name: PyTS run
+      env:
+        IP: ${{ env.SERV_IP}}
+      run: |
+        pyats run job py_job.py
     
-    # - name: 'Upload Artifact'
-    #   uses: actions/upload-artifact@v2
-    #   with:
-    #     name: my-artifact
-    #     path: output.json
+    - name: 'Upload Artifact'
+      uses: actions/upload-artifact@v2
+      with:
+        name: my-artifact
+        path: output.json
