@@ -25,9 +25,6 @@ jobs:
       run: |
           echo "SERV_IP=$(ip -4 addr show eth0 | grep -oP '(?<=inet\s)\d+(\.\d+){3}')" >> $GITHUB_ENV
           echo "SERV_IP1=$(ip -4 route show default | cut -d' ' -f3)">> $GITHUB_ENV
-          ${{env.SERV_IP1}}
-          ${{env.SERV_IP}}
-          ifconfig
           
     - name: RUN IPERFSERVER
       run: |
@@ -58,11 +55,11 @@ jobs:
     
     - name: Show Server IP
       run: |
-        echo $env.SERV_IP   
+        echo $SERV_IP   
     
     - name: PyTS run
       env:
-        IP: $env.SERV_IP
+        IP: $SERV_IP
       run: |
         pyats run job py_job.py
     
