@@ -66,7 +66,7 @@ jobs:
         pip install pyats[full]
         pip install paramiko
     - name: Test env vars for python
-      run: TEST_SECRET=${{ env.SERV_IP }}  # python -c 'import os;print(os.environ['TEST_SECRET'])
+      run: TEST_SECRET=${{ env.SERV_IP }} python -c 'import os;print(os.environ['TEST_SECRET'])'
     
     
     
