@@ -27,15 +27,15 @@ jobs:
           echo $SERV_IP
     - name: bash
       run: |
-          sudo echo $SERV_IP > math-homework.txt
+          echo $SERV_IP > math-homework.txt
     - name: Upload math result for job 1
       uses: actions/upload-artifact@v2
       with:
         name: homework
         path: math-homework.txt      
-    - name: RUN IPERFSERVER
-      run: |
-          iperf3 -s --one-of -D
+    # - name: RUN IPERFSERVER
+    #   run: |
+    #       iperf3 -s --one-of -D
           
              
            
