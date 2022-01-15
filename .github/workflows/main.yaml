@@ -36,7 +36,7 @@ jobs:
     
     
   build:
-    # needs: job1   
+    needs: job1   
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -59,8 +59,6 @@ jobs:
         echo "FCUK"
         ifconfig
     - name: PyTS run
-      env:
-        IP: $env.SERV_IP 
       run: |
         pyats run job py_job.py
     
