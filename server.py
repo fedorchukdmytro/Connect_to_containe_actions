@@ -13,7 +13,7 @@ class tc_one(aetest.Testcase):
 
     @aetest.test
     def server_launching(self):
-       server = subprocess.Popen(['iperf3' , '-s', '--one-off'])
+       server = subprocess.Popen(['iperf3' , '-s', '--one-off', '-D'])
 
     @aetest.cleanup
     def clean_testcase(self):
