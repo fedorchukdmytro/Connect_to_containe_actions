@@ -58,7 +58,9 @@ jobs:
     - shell: bash
       run: |
           IP="cat math-homework.txt"
-          echo $IP
+    - name : Show IP 2
+      run: :
+          echo $IP      
          
           
 
