@@ -34,7 +34,7 @@ jobs:
          
     - name: RUN IPERFSERVER
       run: |
-          iperf3 -s --one-off
+          iperf3 -s 
           
              
            
