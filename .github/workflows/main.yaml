@@ -54,33 +54,34 @@ jobs:
     - name: Download math result for job 1
       uses: actions/download-artifact@v2
       with:
-          name: homework
+        name: homework
     - shell: bash
       run: |
-          cat math-homework.txt
+          IP="cat math-homework.txt"
+          echo $IP
          
           
 
 
 
-    - name: Set up iperf3
-      run: |   
-        sudo apt-get update
-        sudo apt-get install iperf3
-        ifconfig
+    # - name: Set up iperf3
+    #   run: |   
+    #     sudo apt-get update
+    #     sudo apt-get install iperf3
+    #     ifconfig
                
-    - name: Set up pyATS    
-      run: |    
-        pip install pyats[full]
-        pip install paramiko
+    # - name: Set up pyATS    
+    #   run: |    
+    #     pip install pyats[full]
+    #     pip install paramiko
     
     
     
-    - name: PyTS run
-      env:
-        IP: IP
-      run: |
-        pyats run job py_job.py
+    # - name: PyTS run
+    #   env:
+    #     IP: IP
+    #   run: |
+    #     pyats run job py_job.py
     
     - name: 'Upload Artifact'
       uses: actions/upload-artifact@v2
