@@ -28,40 +28,43 @@ jobs:
           
     - name: RUN IPERFSERVER
       run: |
-          iperf3 -s --one-of 
+          iperf3 -s --one-of -D
           
-    
-    
-  build:
-    # needs: job1 
+             
+           
+  build:    
+    needs: job1 
     runs-on: ubuntu-latest
-    steps:
+    steps:   
     - uses: actions/checkout@v2
     - name: Set up Python 3.9
       uses: actions/setup-python@v2
-      with:
+      with:  
         python-version: 3.9
-      
-    - name: Set up iperf3
-      run: |
-        sudo apt-get update
-        sudo apt-get install iperf3
-        ifconfig
-
-    - name: Set up pyATS    
-      run: |
-        pip install pyats[full]
-        pip install paramiko
-    
     - name: Show Server IP
       run: |
           echo $SERV_IP
+
+
+
+    # - name: Set up iperf3
+    #   run: |   
+    #     sudo apt-get update
+    #     sudo apt-get install iperf3
+    #     ifconfig
+               
+    # - name: Set up pyATS    
+    #   run: |    
+    #     pip install pyats[full]
+    #     pip install paramiko
     
-    - name: PyTS run
-      env:
-        IP: $SERV_IP
-      run: |
-        pyats run job py_job.py
+    
+    
+    # - name: PyTS run
+    #   env:
+    #     IP: $SERV_IP
+    #   run: |
+    #     pyats run job py_job.py
     
     - name: 'Upload Artifact'
       uses: actions/upload-artifact@v2
