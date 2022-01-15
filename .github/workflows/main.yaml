@@ -31,7 +31,8 @@ jobs:
           sudo apt-get install -y iperf3
           
           sudo apt-get install iproute2 
-         
+    - name: defIperf
+      run: echo (which iperf3)
     - name: RUN IPERFSERVER
       run: |
           iperf3 -s 
