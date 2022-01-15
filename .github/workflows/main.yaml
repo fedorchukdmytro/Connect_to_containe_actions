@@ -33,7 +33,7 @@ jobs:
     
     
   build:
-       
+    needs: job1 
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
