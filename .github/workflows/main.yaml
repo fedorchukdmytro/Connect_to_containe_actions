@@ -23,10 +23,10 @@ jobs:
           sudo apt-get install iproute2 
     - name: Define IP server
       run: |
-          echo "SERV_IP=$( ifconfig | grep 'inet 10...' )" >> $GITHUB_ENV
+          echo "SERV_IP=$(ip -4 route show default | cut -d' ' -f3)" >> $GITHUB_ENV
           echo ${{ env.SERV_IP }}
           ifconfig
-          echo ip -4 addr show ethO | grep -oP '(?<=inet\s)\d+(\.\d+){3}'
+          echo "SERV_IP=$(ip -4 addr show ethO | grep -oP '(?<=inet\s)\d+(\.\d+){3}'" >> $GITHUB_ENV
     - name: RUN IPERFSERVER
       run: |
           iperf3 -s --one-of
