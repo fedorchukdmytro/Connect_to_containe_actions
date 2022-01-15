@@ -54,8 +54,9 @@ jobs:
     - name: GET IP
       run: |
           SERV_IP=$(cat math-homework.txt) >> $GITHUB_ENV
-          echo $SERV_IP
-          export IP=$SERV_IP
+          
+          export IP=SERV_IP
+          echo $IP
     - name: Set up iperf3
       run: |   
         sudo apt-get update
