@@ -24,7 +24,7 @@ jobs:
     - name: Define IP server
       run: |
           SERV_IP=$(ip -4 addr show eth0 | grep -oP '(?<=inet\s)\d+(\.\d+){3}') >> $GITHUB_ENV
-          # echo "SERV_IP1=$(ip -4 route show default | cut -d' ' -f3)">> $GITHUB_ENV
+          echo $SERV_IP
           
     # - name: RUN IPERFSERVER
     #   run: |
