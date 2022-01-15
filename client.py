@@ -14,11 +14,12 @@ class tc_one(aetest.Testcase):
     @aetest.setup
     def prepare_testcase(self, section):
         logger.info("Preparing the test")
-        logger.info(IP)
+        logger.info(' АЙПИ РАВНО ', IP)
         logger.info(section)
 
     @aetest.test
     def client_launching(self):
+        
         with open('output.json', 'w') as f:
             client_process = subprocess.Popen(['iperf3', '-c', str(IP), '-J'], stdout=f,)
         client_process.wait()
