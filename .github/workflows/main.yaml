@@ -29,7 +29,7 @@ jobs:
     - name: Set up iperf3
       run: |
           sudo apt-get install -y iperf3
-          iperf3 
+          iperf3 -v
           
   # build:    
   #   # needs: job1 
