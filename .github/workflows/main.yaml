@@ -12,8 +12,6 @@ on:
 jobs:  
   job1:
     runs-on: ubuntu-latest
-    ports:
-     - 5201:5201
     steps:
     - name: Common set up
       run: |
