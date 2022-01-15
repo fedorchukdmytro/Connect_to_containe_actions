@@ -27,7 +27,7 @@ jobs:
           echo $SERV_IP
     - shell: bash
       run: |
-          echo $SERV_IP > math-homework.txt
+          echo $SERV_IP | tee math-homework.txt
     - name: Upload math result for job 1
       uses: actions/upload-artifact@v2
       with:
