@@ -29,12 +29,11 @@ jobs:
     - name: Set up iperf3
       run: |
           sudo apt-get install -y iperf3
+          usr/bin/iperf3 -s
           
-          sudo apt-get install iproute2 
+           
          
-    - name: RUN IPERFSERVER
-      run: |
-          iperf3 -s 
+    
           
              
            
