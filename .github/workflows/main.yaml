@@ -16,11 +16,11 @@ jobs:
     - name: Common set up
       run: |
          sudo apt-get update 
-    # - name: Set up iperf3
-    #   run: |
-    #       sudo apt-get install iperf3
+    - name: Set up iperf3
+      run: |
+          sudo apt-get install iperf3
           
-    #       sudo apt-get install iproute2 
+          sudo apt-get install iproute2 
     - name: Define IP server
       run: |
           SERV_IP=$(ip -4 addr show eth0 | grep -oP '(?<=inet\s)\d+(\.\d+){3}') >> $GITHUB_ENV
@@ -33,7 +33,7 @@ jobs:
     
     
   build:
-    needs: job1 
+    # needs: job1 
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
