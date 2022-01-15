@@ -55,18 +55,18 @@ jobs:
       run: |
           SERV_IP=$(cat math-homework.txt) >> $GITHUB_ENV
           
-          export IP=SERV_IP
+          export IP=$SERV_IP
           echo $IP
-    - name: Set up iperf3
-      run: |   
-        sudo apt-get update
-        sudo apt-get install iperf3
-        ifconfig
+    # - name: Set up iperf3
+    #   run: |   
+    #     sudo apt-get update
+    #     sudo apt-get install iperf3
+    #     ifconfig
                
-    - name: Set up pyATS    
-      run: |    
-        pip install pyats[full]
-        pip install paramiko
+    # - name: Set up pyATS    
+    #   run: |    
+    #     pip install pyats[full]
+    #     pip install paramiko
     # - name: Test env vars for python
     #   run: TEST_SECRET=${{ env.SERV_IP }} python -c 'import os;print(os.environ['TEST_SECRET'])'
     
