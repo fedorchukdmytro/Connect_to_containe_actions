@@ -59,7 +59,7 @@ jobs:
       run: |
           IP="cat math-homework.txt"
     - name : Show IP 2
-      run: :
+      run: 
           echo $IP      
          
           
