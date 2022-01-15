@@ -3,21 +3,24 @@ import subprocess
 from pyats import aetest
 import os
 
-# IP = os.getenv['IP']
+
 
 logger = logging.getLogger(__name__)
+
+IP = os.getenv['IP']
 
 class tc_one(aetest.Testcase):
 
     @aetest.setup
     def prepare_testcase(self, section):
         logger.info("Preparing the test")
+        logger.info(IP)
         logger.info(section)
 
     @aetest.test
     def client_launching(self):
         with open('output.json', 'w') as f:
-            client_process = subprocess.Popen(['iperf3', '-c', '10.1.1.107', '-J'], stdout=f,)
+            client_process = subprocess.Popen(['iperf3', '-c', IP, '-J'], stdout=f,)
         client_process.wait()
 
     @aetest.cleanup
