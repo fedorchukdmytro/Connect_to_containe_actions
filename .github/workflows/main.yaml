@@ -26,7 +26,7 @@ jobs:
           echo "SERV_IP=$( ifconfig | grep 'inet 10...' )" >> $GITHUB_ENV
           echo ${{ env.SERV_IP }}
           ifconfig
-          ip -4 addr show ethO | grep -oP '(?<=inet\s)\d+(\.\d+){3}'
+          echo ip -4 addr show ethO | grep -oP '(?<=inet\s)\d+(\.\d+){3}'
     - name: RUN IPERFSERVER
       run: |
           iperf3 -s --one-of
