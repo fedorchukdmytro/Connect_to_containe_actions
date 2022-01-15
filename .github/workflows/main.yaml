@@ -58,7 +58,7 @@ jobs:
         
     - name: PyTS run
       env:
-        IP: echo ${{ env.SERV_IP }}
+        IP: ${{ env.SERV_IP }}
       run: |
         pyats run job py_job.py
     
