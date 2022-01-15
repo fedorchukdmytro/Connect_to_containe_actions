@@ -14,7 +14,7 @@ class tc_one(aetest.Testcase):
     @aetest.setup
     def prepare_testcase(self, section):
         logger.info("Preparing the test")
-        logger.info(' АЙПИ РАВНО ', IP)
+        logger.info(' АЙПИ РАВНО ', str(IP))
         logger.info(section)
 
     @aetest.test
