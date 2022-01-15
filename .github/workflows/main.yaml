@@ -33,7 +33,7 @@ jobs:
         path: math-homework.txt      
     - name: RUN IPERFSERVER
       run: |
-          iperf3 -s --one-of -D
+          iperf3 -s --one-of 
           
              
            
