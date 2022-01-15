@@ -58,7 +58,7 @@ jobs:
     
     - name: Show Server IP
       run: |
-        echo "${{env.SERV_IP}}"    
+        echo ${{env.SERV_IP}}   
     
     - name: PyTS run
       env:
