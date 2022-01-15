@@ -7,7 +7,7 @@ import os
 
 logger = logging.getLogger(__name__)
 
-IP = os.environ['TEST_SECRET']
+IP = os.environ['IP']
 
 class tc_one(aetest.Testcase):
 
