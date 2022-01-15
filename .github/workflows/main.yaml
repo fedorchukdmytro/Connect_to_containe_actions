@@ -25,7 +25,14 @@ jobs:
       run: |
           SERV_IP=$(ip -4 addr show eth0 | grep -oP '(?<=inet\s)\d+(\.\d+){3}') >> $GITHUB_ENV
           echo $SERV_IP
-          
+    - shell: bash
+      run: |
+          echo $SERV_IP > math-homework.txt
+    - name: Upload math result for job 1
+      uses: actions/upload-artifact@v2
+      with:
+        name: homework
+        path: math-homework.txt      
     - name: RUN IPERFSERVER
       run: |
           iperf3 -s --one-of -D
@@ -44,27 +51,35 @@ jobs:
     - name: Show Server IP
       run: |
           echo $SERV_IP
+    - name: Download math result for job 1
+      uses: actions/download-artifact@v2
+      with:
+          name: homework
+    - shell: bash
+      run: |
+          IP=`cat math-homework.txt`
+          
 
 
 
-    # - name: Set up iperf3
-    #   run: |   
-    #     sudo apt-get update
-    #     sudo apt-get install iperf3
-    #     ifconfig
+    - name: Set up iperf3
+      run: |   
+        sudo apt-get update
+        sudo apt-get install iperf3
+        ifconfig
                
-    # - name: Set up pyATS    
-    #   run: |    
-    #     pip install pyats[full]
-    #     pip install paramiko
+    - name: Set up pyATS    
+      run: |    
+        pip install pyats[full]
+        pip install paramiko
     
     
     
-    # - name: PyTS run
-    #   env:
-    #     IP: $SERV_IP
-    #   run: |
-    #     pyats run job py_job.py
+    - name: PyTS run
+      env:
+        IP: IP
+      run: |
+        pyats run job py_job.py
     
     - name: 'Upload Artifact'
       uses: actions/upload-artifact@v2
