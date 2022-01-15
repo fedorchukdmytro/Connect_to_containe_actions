@@ -16,18 +16,18 @@ jobs:
     - name: Common set up
       run: |
          sudo apt-get update 
-    - name: Set up iperf3
-      run: |
-          sudo apt-get install iperf3
+    # - name: Set up iperf3
+    #   run: |
+    #       sudo apt-get install iperf3
           
-          sudo apt-get install iproute2 
+    #       sudo apt-get install iproute2 
     - name: Define IP server
       run: |
           SERV_IP=$(ip -4 addr show eth0 | grep -oP '(?<=inet\s)\d+(\.\d+){3}') >> $GITHUB_ENV
           echo $SERV_IP
-    - shell: bash
+    - name: bash
       run: |
-          echo $SERV_IP | tee math-homework.txt
+          sudo echo $SERV_IP > math-homework.txt
     - name: Upload math result for job 1
       uses: actions/upload-artifact@v2
       with:
@@ -58,9 +58,7 @@ jobs:
     - shell: bash
       run: |
           IP="cat math-homework.txt"
-    - name : Show IP 2
-      run: 
-          echo $IP      
+          
          
           
 
@@ -85,8 +83,8 @@ jobs:
     #   run: |
     #     pyats run job py_job.py
     
-    - name: 'Upload Artifact'
-      uses: actions/upload-artifact@v2
-      with:
-        name: my-artifact
-        path: output.json
+    # - name: 'Upload Artifact'
+    #   uses: actions/upload-artifact@v2
+    #   with:
+    #     name: my-artifact
+    #     path: output.json
