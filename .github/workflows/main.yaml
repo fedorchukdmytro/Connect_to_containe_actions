@@ -53,7 +53,7 @@ jobs:
         name: homework
     - name: GET IP
       run: |
-          IP="cat math-homework.txt"
+          cat math-homework.txt
           echo $IP
           
          
