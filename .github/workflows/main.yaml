@@ -53,8 +53,9 @@ jobs:
         name: homework
     - name: GET IP
       run: |
-          cat math-homework.txt
-          echo $IP
+          SERV_IP=$(cat math-homework.txt) >> $GITHUB_ENV
+          echo $SERV_IP
+          
           
          
           
