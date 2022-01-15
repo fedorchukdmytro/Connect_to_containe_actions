@@ -7,7 +7,7 @@ import os
 
 logger = logging.getLogger(__name__)
 
-IP = os.environ['IP']
+IP = os.environ['env.SERV_IP']
 
 class tc_one(aetest.Testcase):
 
@@ -22,6 +22,7 @@ class tc_one(aetest.Testcase):
         
         with open('output.json', 'w') as f:
             client_process = subprocess.Popen(['iperf3', '-c', str(IP), '-J'], stdout=f,)
+        print((str(IP)))
         client_process.wait()
 
     @aetest.cleanup
