@@ -60,7 +60,7 @@ jobs:
         ifconfig
     - name: PyTS run
       env:
-        IP: env.SERV_IP 
+        IP: $env.SERV_IP 
       run: |
         pyats run job py_job.py
     
