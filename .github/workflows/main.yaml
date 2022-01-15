@@ -55,10 +55,10 @@ jobs:
       run: |
         pip install pyats[full]
         pip install paramiko
-        echo "${{ env.SERV_IP }}"
-        echo "FCUK"
-        ifconfig
+        
     - name: PyTS run
+      env:
+        IP: SERV_IP
       run: |
         pyats run job py_job.py
     
