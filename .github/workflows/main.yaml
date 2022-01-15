@@ -26,7 +26,7 @@ jobs:
           echo "SERV_IP=$(ip -4 addr show eth0 | grep -oP '(?<=inet\s)\d+(\.\d+){3}')" >> $GITHUB_ENV
           echo ${{ env.SERV_IP }}
           ifconfig
-          # echo "SERV_IP=$(ip -4 addr show ethO | grep -oP '(?<=inet\s)\d+(\.\d+){3}'" >> $GITHUB_ENV
+          
     - name: RUN IPERFSERVER
       run: |
           iperf3 -s --one-of
@@ -47,11 +47,14 @@ jobs:
       run: |
         sudo apt-get update
         sudo apt-get install iperf3
+        ifconfig
+        
     - name: Set up pyATS    
       run: |
         pip install pyats[full]
         pip install paramiko
-        
+        echo "${{ env.SERV_IP }}"
+        echo "FCUK"
     - name: PyTS run
       env:
         IP: ${{ env.SERV_IP }} 
