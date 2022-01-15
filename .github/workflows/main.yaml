@@ -12,6 +12,9 @@ on:
 jobs:  
   job1:
     runs-on: ubuntu-latest
+    ports:
+          # Opens tcp port 6379 on the host and service container
+          - 5201:5201
     steps:
     - name: Common set up
       run: |
