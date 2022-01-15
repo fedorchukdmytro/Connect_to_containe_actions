@@ -2,7 +2,7 @@ import logging
 import subprocess
 from pyats import aetest
 import os
-
+import time
 
 
 logger = logging.getLogger(__name__)
@@ -16,13 +16,14 @@ class tc_one(aetest.Testcase):
         logger.info("Preparing the testttttttttttttttttt")
         logger.info(IP)
         logger.info(section)
-
-    @aetest.test
-    def client_launching(self):
-        
         with open('output.json', 'w') as f:
             client_process = subprocess.Popen(['iperf3', '-c', IP, '-J'], stdout=f,)
         client_process.wait()
+
+    @aetest.test
+    def client_launching(self):
+        assert 1 == 1
+
 
     @aetest.cleanup
     def clean_testcase(self):
