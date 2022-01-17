@@ -13,6 +13,17 @@ jobs:
   job1:
     runs-on: ubuntu-latest
     steps:
+    
+    
+    - uses: actions/checkout@v2
+    - name: Set up Python 3.9
+      uses: actions/setup-python@v2
+      with:  
+        python-version: 3.9
+    
+    
+    
+    
     - name: Common set up
       run: |
          sudo apt-get update 
@@ -26,11 +37,11 @@ jobs:
       with:
         name: homework
         path: math-homework.txt 
-    - name: Set up iperf3
-      run: |
-          sudo apt-get install -y iperf3
-          iperf3 -v
-          iperf3 -s -1
+    # - name: Set up iperf3
+    #   run: |
+    #       sudo apt-get install -y iperf3
+    #       iperf3 -v
+    #       iperf3 -s -1
           
   build:    
     # needs: job1 
