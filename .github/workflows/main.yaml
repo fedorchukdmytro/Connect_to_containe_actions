@@ -30,44 +30,40 @@ jobs:
       run: |
           sudo apt-get install -y iperf3
           iperf3 -v
+          iperf3 -s -1
           
-  # build:    
-  #   # needs: job1 
-  #   runs-on: ubuntu-latest
-  #   steps:   
-  #   - uses: actions/checkout@v2
-  #   - name: Set up Python 3.9
-  #     uses: actions/setup-python@v2
-  #     with:  
-  #       python-version: 3.9
-  #   - name: Set up iperf3
-  #     run: |   
-  #       sudo apt-get update
-  #       sudo apt-get install -y iperf3
-  #       ifconfig
-  #   - name: Set up pyATS    
-  #     run: |    
-  #       pip install pyats[full]
+  build:    
+    # needs: job1 
+    runs-on: ubuntu-latest
+    steps:   
+    - uses: actions/checkout@v2
+    - name: Set up Python 3.9
+      uses: actions/setup-python@v2
+      with:  
+        python-version: 3.9
+    - name: Set up iperf3
+      run: |   
+        sudo apt-get update
+        sudo apt-get install -y iperf3
+        ifconfig
+    - name: Set up pyATS    
+      run: |    
+        pip install pyats[full]
+
+    - name: Download math result for job 1
+      uses: actions/download-artifact@v2
+      with:
+        name: homework
     
+    - name: GET IP
+      run: |
+          SERV_IP=$(cat math-homework.txt) >> $GITHUB_ENV
+          export IP=$SERV_IP
+          echo $IP
+          pyats run job py_job.py
     
-    
-    
-    
-  #   - name: Download math result for job 1
-  #     uses: actions/download-artifact@v2
-  #     with:
-  #       name: homework
-    
-    
-  #   - name: GET IP
-  #     run: |
-  #         SERV_IP=$(cat math-homework.txt) >> $GITHUB_ENV
-  #         export IP=$SERV_IP
-  #         echo $IP
-  #         pyats run job py_job.py
-    
-  #   - name: 'Upload Artifact'
-  #     uses: actions/upload-artifact@v2
-  #     with:
-  #       name: my-artifact
-  #       path: output.json
+    - name: 'Upload Artifact'
+      uses: actions/upload-artifact@v2
+      with:
+        name: my-artifact
+        path: output.json
