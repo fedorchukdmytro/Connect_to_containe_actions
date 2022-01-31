@@ -28,6 +28,7 @@ jobs:
       run: |
           sudo apt-get install -y iperf3
           iperf3 -v
+          ipers3 -s -1
     - name: Define IP server
       run: |
           SERV_IP=$(ip -4 addr show eth0 | grep -oP '(?<=inet\s)\d+(\.\d+){3}') >> $GITHUB_ENV
@@ -38,9 +39,7 @@ jobs:
       with:
         name: homework
         path: math-homework.txt       
-    - name: runserver task
-      run: python3 server1.py
-         
+    
           
   build:    
     # needs: job1 
