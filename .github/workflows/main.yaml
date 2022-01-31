@@ -71,6 +71,7 @@ jobs:
           echo $IP
           pyats run job py_job.py
     
+    
     - name: 'Upload Artifact'
       uses: actions/upload-artifact@v2
       with:
