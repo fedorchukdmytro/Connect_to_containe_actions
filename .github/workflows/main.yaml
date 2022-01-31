@@ -39,7 +39,7 @@ jobs:
         name: homework
         path: math-homework.txt       
     - name: runserver task
-      run: python3 server1.py
+      run: iperf3 -s -1
          
           
   build:    
