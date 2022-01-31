@@ -24,11 +24,7 @@ jobs:
       run: |
          sudo apt-get update 
      
-    - name: Set up iperf3
-      run: |
-          sudo apt-get install -y iperf3
-          iperf3 -v
-          iperf3 -s -1
+    
     - name: Define IP server
       run: |
           SERV_IP=$(ip -4 addr show eth0 | grep -oP '(?<=inet\s)\d+(\.\d+){3}') >> $GITHUB_ENV
@@ -38,7 +34,13 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: homework
-        path: math-homework.txt       
+        path: math-homework.txt  
+
+    - name: Set up iperf3
+      run: |
+          sudo apt-get install -y iperf3
+          iperf3 -v
+          iperf3 -s -1     
     
           
   build:    
