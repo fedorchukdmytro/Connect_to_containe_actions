@@ -71,6 +71,7 @@ jobs:
           SERV_IP=$(cat math-homework.txt) >> $GITHUB_ENV
           export IP=$SERV_IP
           echo $IP
+          ping $IP -c 5
           pyats run job py_job.py
     
     
